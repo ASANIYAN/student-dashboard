@@ -9,7 +9,7 @@ const Body = () => {
                         Learn On Your Class Schedule
                     </h1>
                     <div className="mx-auto flex md:justify-start justify-center">
-                        <Link to='/' className="bg-white border-2 inline-block border-green hover:text-green text-black font-bold py-4 px-8 rounded mt-10">
+                        <Link to='/login' className="bg-white border-2 inline-block border-green hover:text-green text-black font-bold py-4 px-8 rounded mt-10">
                             Log In
                         </Link>
 

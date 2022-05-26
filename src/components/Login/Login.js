@@ -36,7 +36,7 @@ const Login = () => {
                                 Student Login
                         </h1>
                         {
-                            error && <p className="text-red-700 text-center"> { error } </p>
+                            error && <p className="text-red-700 text-center text-xl"> { error } </p>
                         }
                         <h2 className='text-center text-gray-500'>
                             Make sure your account is secure
