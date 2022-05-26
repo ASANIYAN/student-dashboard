@@ -37,7 +37,7 @@ const Dashboard = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to='/' className="flex items-center p-2 text-base font-normal text-white rounded-lg  hover:bg-white hover:text-green cursor-pointer">
+                            <Link to='/courses' className="flex items-center p-2 text-base font-normal text-white rounded-lg  hover:bg-white hover:text-green cursor-pointer">
                             <i className="fa-solid fa-chalkboard-user h-6 w-6"></i>
                             <span className="ml-3">Courses</span>
                             </Link>

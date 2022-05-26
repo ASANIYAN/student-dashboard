@@ -4,6 +4,7 @@ import Home from './components/landing/Home';
 import Login from './components/Login/Login';
 import PrivateRoute from './components/PrivateRoute';
 import Signup from './components/Signup/Signup';
+import Courses from './components/user/Courses';
 import Dashboard from './components/user/Dashboard';
 import Profile from './components/user/Profile';
 function App() {
@@ -18,9 +19,20 @@ function App() {
               </PrivateRoute>
             }
             />
+            <Route path='/profile' element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            }
+            />
+            <Route path='/courses' element={
+              <PrivateRoute>
+                <Courses />
+              </PrivateRoute>
+            }
+            />
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<Signup />} />
-            <Route path='/profile' element={<Profile />} />
             <Route path='/landing' element={<Home />} />
           </Routes>
         </div>
