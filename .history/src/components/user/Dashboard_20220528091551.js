@@ -65,7 +65,7 @@ const Dashboard = () => {
             </div>
 
             <div className="container mt-10">
-                <div className="flex flex-col justify-around bg-white rounded-lg border border-white shadow-md md:flex-row w-max mx-auto">
+                <div className="flex flex-col justify-around bg-white rounded-lg border border-white shadow-md md:flex-row w-max">
                     <div className="pt-20">
                         {
                             error && <p className="text-red-700 text-center text-2xl"> { error } </p>
