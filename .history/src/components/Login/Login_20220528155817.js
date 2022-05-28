@@ -3,9 +3,11 @@ import Navbar from '../landing/assets/Navbar/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import App from '../firebase/firebase';
 
 const Login = () => {
 
+    App();
     const emailRef = useRef();
     const passwordRef = useRef();
     const { login, signInWithGoogle } = useAuth();

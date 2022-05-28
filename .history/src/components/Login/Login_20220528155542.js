@@ -3,9 +3,11 @@ import Navbar from '../landing/assets/Navbar/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import App from '../firebase/firebase';
 
 const Login = () => {
 
+    App();
     const emailRef = useRef();
     const passwordRef = useRef();
     const { login, signInWithGoogle } = useAuth();
@@ -100,6 +102,7 @@ const Login = () => {
                             >
                                 Log in
                             </button>
+                            </form>
                             <button
                                 type="submit"
                                 className="inline-block mt-3 px-7 py-3 bg-green text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:text-green hover:bg-white hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full"
@@ -110,7 +113,6 @@ const Login = () => {
                             >
                                 Log in with Google <i className="fa-brands fa-google"></i>
                             </button>
-                            </form>
                     </div>
                 </div>
             </div>

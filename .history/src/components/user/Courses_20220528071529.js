@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import course from "../../data/db";
 
-const Profile = () => {
+const Courses = () => {
 
     const [open, setOpen] = useState(false);
     const [error, setError] = useState('');
-    const { currentUser, logout } = useAuth();
+    const { logout } = useAuth();
     const navigate = useNavigate();
 
     async function handleLogout() {
@@ -21,8 +22,8 @@ const Profile = () => {
     }
 
     return (
-    <div className="w-full">
-        <aside className={`w-64 absolute ${open ? 'left-0' : '-left-64'} border-2 border-green h-screen transition-all duration-200`} aria-label="Sidebar">
+        <div className="w-full">
+            <aside className={`w-64 absolute ${open ? 'left-0' : '-left-64'} border-2 border-green h-screen transition-all duration-200`} aria-label="Sidebar">
             <div className="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-green h-full">
                 <div className="flex justify-end mb-4">
                     <i onClick={() => setOpen(open => !open)} className="fa-solid fa-xmark text-white cursor-pointer h-6 w-6"></i>
@@ -67,19 +68,22 @@ const Profile = () => {
                 error && <p className="text-red-700 text-center text-2xl"> { error } </p>
             }
             <h1 className="text-4xl text-center">
-                Profile
+                Courses
             </h1>
-            <div className="mt-10 block p-6 w-max rounded-lg border shadow-md text-black bg-white hover:bg-green  hover:text-white mx-auto">
-            <h2 className="mb-2 text-3xl font-normal tracking-tight">User:</h2>
-            <h3 className="font-normal text-2xl">
-                {
-                    currentUser.email
+            {
+                    course.map((data) => (
+                        <div className="mt-10 block p-6 max-w-sm rounded-lg border shadow-md text-black bg-white hover:bg-green hover:text-white mx-auto h-28">
+                            <h2 key={data.id} className="mb-2 text-3xl font-normal tracking-tight">
+                                {
+                                    data.name
+                                }
+                            </h2>
+                        </div>
+                    ))
                 }
-            </h3>
-            </div>
         </div>
 
-    </div>
+        </div>
     );
 }
-export default Profile;
+export default Courses;

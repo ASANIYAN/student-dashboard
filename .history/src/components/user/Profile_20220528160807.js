@@ -69,7 +69,7 @@ const Profile = () => {
             <h1 className="text-4xl text-center">
                 Profile
             </h1>
-            <div className="mt-10 block p-6 w-max rounded-lg border shadow-md text-black bg-white hover:bg-green  hover:text-white mx-auto">
+            <div className="mt-10 block p-6 w-4/6 rounded-lg border shadow-md text-black bg-white hover:bg-green  hover:text-white mx-auto">
             <h2 className="mb-2 text-3xl font-normal tracking-tight">User:</h2>
             <h3 className="font-normal text-2xl">
                 {
