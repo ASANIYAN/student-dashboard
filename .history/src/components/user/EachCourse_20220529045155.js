@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import course from "../../data/db"
 import { useAuth } from "../contexts/AuthContext";
-import course from "../../data/db";
 
-const Courses = () => {
-
+const EachCourse = () => {
+    const selectedCourse = localStorage.getItem('Course');
+    let courseInfo = course.find(data => data.name.toUpperCase() === selectedCourse.toUpperCase() );
     const [open, setOpen] = useState(false);
-    const [error, setError] = useState('');
-    const { logout } = useAuth();
-    //const courseRef = useRef();
+    // const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { logout } = useAuth();
 
     async function handleLogout() {
         setError('');
@@ -21,20 +21,8 @@ const Courses = () => {
             setError('Failed to log out');
         }
     }
-    // console.log(selectedCourse);
-
-   async function handleCourseClick(e) {
-        e.preventDefault();
-        // setSelectedCourse(e.currentTarget.querySelector('.course').innerText);
-        localStorage.setItem('Course', e.currentTarget.querySelector('.course').innerText);
-        try {
-            navigate('/eachcourse');
-        } catch {
-            
-        }
-        // console.log(selectedCourse);
-    }
-
+    console.log(selectedCourse);
+    console.log(courseInfo);
     return (
         <div className="w-full">
             <aside className={`w-64 absolute ${open ? 'left-0' : '-left-64'} h-screen transition-all duration-200`} aria-label="Sidebar">
@@ -73,33 +61,34 @@ const Courses = () => {
             </div>
         </aside>
 
-        <div className="container pt-4">
-                <i onClick={() => setOpen(open => !open)} className="fa-solid fa-bars text-green text-xl md:text-3xl cursor-pointer"></i>
-        </div>
-
         <div className="container">
-            {
-                error && <p className="text-red-700 text-center text-2xl"> { error } </p>
-            }
-            <h1 className="text-4xl text-center">
-                Courses
-            </h1>
-            <div className="container flex justify-between flex-wrap flex-1">
-                {
-                        course.map((data) => {
-                            return <div key={data.id} onClick={handleCourseClick} className="cursor-pointer mt-10 block p-6 max-w-sm rounded-lg border shadow-md text-black bg-white hover:bg-green hover:text-white mx-auto h-28">
-                            <h2 key={data.id} className="mb-2 text-3xl font-normal tracking-tight course text-center">
+                    <h1 className="text-4xl text-center">
+                        Introduction to {
+                            courseInfo.name
+                        } 
+                    </h1>
+                    <p className="text-center mt-4">
+                        {
+                            courseInfo.details.intro
+                        }
+                    </p>
+                    <h2 className="text-2xl text-center mt-2">
+                        Branches
+                    </h2>
+                        {
+                            courseInfo.details.branches.map(data => {
+                                return <p className="text-center mt-2" key={data}>
                                     {
-                                        data.name
+                                        data
                                     }
-                                </h2>
-                            </div>;
-                        })
-                    }
-            </div>
+                                </p>
+                            })
+                        }
+                </div> 
         </div>
 
-        </div>
+                
     );
 }
-export default Courses;
+ 
+export default EachCourse;

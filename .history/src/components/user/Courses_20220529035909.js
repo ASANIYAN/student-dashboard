@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import course from "../../data/db";
@@ -7,7 +7,7 @@ const Courses = () => {
 
     const [open, setOpen] = useState(false);
     const [error, setError] = useState('');
-    const { logout } = useAuth();
+    const { logout, selectedCourse, setSelectedCourse } = useAuth();
     //const courseRef = useRef();
     const navigate = useNavigate();
 
@@ -21,18 +21,10 @@ const Courses = () => {
             setError('Failed to log out');
         }
     }
-    // console.log(selectedCourse);
 
-   async function handleCourseClick(e) {
+    function handleCourseClick(e) {
         e.preventDefault();
-        // setSelectedCourse(e.currentTarget.querySelector('.course').innerText);
-        localStorage.setItem('Course', e.currentTarget.querySelector('.course').innerText);
-        try {
-            navigate('/eachcourse');
-        } catch {
-            
-        }
-        // console.log(selectedCourse);
+        console.log(e.currentTarget.querySelector('.course'));
     }
 
     return (
@@ -84,11 +76,11 @@ const Courses = () => {
             <h1 className="text-4xl text-center">
                 Courses
             </h1>
-            <div className="container flex justify-between flex-wrap flex-1">
+            <div className="w-full flex justify-between">
                 {
                         course.map((data) => {
                             return <div key={data.id} onClick={handleCourseClick} className="cursor-pointer mt-10 block p-6 max-w-sm rounded-lg border shadow-md text-black bg-white hover:bg-green hover:text-white mx-auto h-28">
-                            <h2 key={data.id} className="mb-2 text-3xl font-normal tracking-tight course text-center">
+                            <h2 key={data.id} className="mb-2 text-3xl font-normal tracking-tight course">
                                     {
                                         data.name
                                     }

@@ -6,7 +6,6 @@ import PrivateRoute from './components/PrivateRoute';
 import Signup from './components/Signup/Signup';
 import Courses from './components/user/Courses';
 import Dashboard from './components/user/Dashboard';
-import EachCourse from './components/user/EachCourse';
 import Profile from './components/user/Profile';
 function App() {
   return (
@@ -29,12 +28,6 @@ function App() {
             <Route path='/courses' element={
               <PrivateRoute>
                 <Courses />
-              </PrivateRoute>
-            }
-            />
-            <Route path='/eachcourse' element={
-              <PrivateRoute>
-                <EachCourse />
               </PrivateRoute>
             }
             />

@@ -65,7 +65,7 @@ const Dashboard = () => {
             </div>
 
             <div className="container mt-10">
-                <div className="flex flex-col justify-around bg-white rounded-lg border border-white shadow-md md:flex-row">
+                <div className="flex flex-col justify-around bg-white rounded-lg border border-white shadow-md md:flex-row mx-auto">
                     <div className="pt-20">
                         {
                             error && <p className="text-red-700 text-center text-2xl"> { error } </p>
@@ -82,7 +82,7 @@ const Dashboard = () => {
                                 ))
                             } */}
                         </p>
-                        <p className="text-4xl text-center">
+                        <p className="text-4xl text-center break-words">
                             {
                                 currentUser.email
                             }

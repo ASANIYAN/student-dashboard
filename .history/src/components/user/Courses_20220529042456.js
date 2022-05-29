@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import course from "../../data/db";
@@ -7,7 +7,7 @@ const Courses = () => {
 
     const [open, setOpen] = useState(false);
     const [error, setError] = useState('');
-    const { logout } = useAuth();
+    const { logout, selectedCourse, setSelectedCourse } = useAuth();
     //const courseRef = useRef();
     const navigate = useNavigate();
 
@@ -25,8 +25,7 @@ const Courses = () => {
 
    async function handleCourseClick(e) {
         e.preventDefault();
-        // setSelectedCourse(e.currentTarget.querySelector('.course').innerText);
-        localStorage.setItem('Course', e.currentTarget.querySelector('.course').innerText);
+        setSelectedCourse(e.currentTarget.querySelector('.course').innerText);
         try {
             navigate('/eachcourse');
         } catch {

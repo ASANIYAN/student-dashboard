@@ -32,13 +32,8 @@ function App() {
               </PrivateRoute>
             }
             />
-            <Route path='/eachcourse' element={
-              <PrivateRoute>
-                <EachCourse />
-              </PrivateRoute>
-            }
-            />
             <Route path='/login' element={<Login />} />
+            <Route path='/eachcourse' element={<EachCourse />} />
             <Route path='/signup' element={<Signup />} />
             <Route path='/landing' element={<Home />} />
           </Routes>

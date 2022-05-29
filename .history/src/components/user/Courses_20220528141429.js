@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import course from "../../data/db";
@@ -7,9 +7,13 @@ const Courses = () => {
 
     const [open, setOpen] = useState(false);
     const [error, setError] = useState('');
-    const { logout } = useAuth();
-    //const courseRef = useRef();
+    const { logout, selectedCourse, setSelectedCourse } = useAuth();
+    const courseRef = useRef();
     const navigate = useNavigate();
+
+    function handleCourseClick(e) {
+        e.preventDefault();
+    }
 
     async function handleLogout() {
         setError('');
@@ -21,23 +25,10 @@ const Courses = () => {
             setError('Failed to log out');
         }
     }
-    // console.log(selectedCourse);
-
-   async function handleCourseClick(e) {
-        e.preventDefault();
-        // setSelectedCourse(e.currentTarget.querySelector('.course').innerText);
-        localStorage.setItem('Course', e.currentTarget.querySelector('.course').innerText);
-        try {
-            navigate('/eachcourse');
-        } catch {
-            
-        }
-        // console.log(selectedCourse);
-    }
 
     return (
         <div className="w-full">
-            <aside className={`w-64 absolute ${open ? 'left-0' : '-left-64'} h-screen transition-all duration-200`} aria-label="Sidebar">
+            <aside className={`w-64 absolute ${open ? 'left-0' : '-left-64'} border-2 border-green h-screen transition-all duration-200`} aria-label="Sidebar">
             <div className="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-green h-full">
                 <div className="flex justify-end mb-4">
                     <i onClick={() => setOpen(open => !open)} className="fa-solid fa-xmark text-white cursor-pointer h-6 w-6"></i>
@@ -84,19 +75,17 @@ const Courses = () => {
             <h1 className="text-4xl text-center">
                 Courses
             </h1>
-            <div className="container flex justify-between flex-wrap flex-1">
-                {
-                        course.map((data) => {
-                            return <div key={data.id} onClick={handleCourseClick} className="cursor-pointer mt-10 block p-6 max-w-sm rounded-lg border shadow-md text-black bg-white hover:bg-green hover:text-white mx-auto h-28">
-                            <h2 key={data.id} className="mb-2 text-3xl font-normal tracking-tight course text-center">
-                                    {
-                                        data.name
-                                    }
-                                </h2>
-                            </div>;
-                        })
-                    }
-            </div>
+            {
+                    course.map((data) => (
+                        <div key={data.id} onClick={this.handleCourseClick} className="cursor-pointer mt-10 block p-6 max-w-sm rounded-lg border shadow-md text-black bg-white hover:bg-green hover:text-white mx-auto h-28">
+                            <h2 key={data.id} className="mb-2 text-3xl font-normal tracking-tight">
+                                {
+                                    data.name
+                                }
+                            </h2>
+                        </div>
+                    ))
+                }
         </div>
 
         </div>
