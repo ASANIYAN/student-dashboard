@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/student-dashboard/static/css/main.e186a837.css",
-    "main.js": "/student-dashboard/static/js/main.51b78993.js",
+    "main.js": "/student-dashboard/static/js/main.996aea61.js",
     "static/media/school.png": "/student-dashboard/static/media/school.b470c00dac6132491de3.png",
     "static/media/students.svg": "/student-dashboard/static/media/students.7b6ce71eaa7f2242dbeafc906b3efed9.svg",
     "static/media/login.svg": "/student-dashboard/static/media/login.43177b5fcd274bb97f5e478892ab0814.svg",
     "index.html": "/student-dashboard/index.html",
     "main.e186a837.css.map": "/student-dashboard/static/css/main.e186a837.css.map",
-    "main.51b78993.js.map": "/student-dashboard/static/js/main.51b78993.js.map"
+    "main.996aea61.js.map": "/student-dashboard/static/js/main.996aea61.js.map"
   },
   "entrypoints": [
     "static/css/main.e186a837.css",
-    "static/js/main.51b78993.js"
+    "static/js/main.996aea61.js"
   ]
 }
